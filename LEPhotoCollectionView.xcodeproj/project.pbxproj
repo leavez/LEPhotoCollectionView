@@ -8,19 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		4167C1BC1D3F52B8006DC521 /* LEPhotoCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4167C1BB1D3F52B8006DC521 /* LEPhotoCollectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4167C1CB1D3F533B006DC521 /* LEGapPagingCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4167C1C31D3F533B006DC521 /* LEGapPagingCollectionView.h */; };
+		4167C1CB1D3F533B006DC521 /* LEGapPagingCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4167C1C31D3F533B006DC521 /* LEGapPagingCollectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4167C1CC1D3F533B006DC521 /* LEGapPagingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4167C1C41D3F533B006DC521 /* LEGapPagingCollectionView.m */; };
-		4167C1CD1D3F533B006DC521 /* LEPhotoCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 4167C1C51D3F533B006DC521 /* LEPhotoCell.h */; };
+		4167C1CD1D3F533B006DC521 /* LEPhotoCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 4167C1C51D3F533B006DC521 /* LEPhotoCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4167C1CE1D3F533B006DC521 /* LEPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4167C1C61D3F533B006DC521 /* LEPhotoCell.m */; };
-		4167C1CF1D3F533B006DC521 /* LEZoomView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4167C1C71D3F533B006DC521 /* LEZoomView.h */; };
+		4167C1CF1D3F533B006DC521 /* LEZoomView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4167C1C71D3F533B006DC521 /* LEZoomView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4167C1D01D3F533B006DC521 /* LEZoomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4167C1C81D3F533B006DC521 /* LEZoomView.m */; };
 		4167C1DB1D3F53B9006DC521 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4167C1DA1D3F53B9006DC521 /* main.m */; };
 		4167C1DE1D3F53B9006DC521 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4167C1DD1D3F53B9006DC521 /* AppDelegate.m */; };
-		4167C1E11D3F53B9006DC521 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4167C1E01D3F53B9006DC521 /* ViewController.m */; };
 		4167C1E41D3F53B9006DC521 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4167C1E21D3F53B9006DC521 /* Main.storyboard */; };
 		4167C1E61D3F53B9006DC521 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4167C1E51D3F53B9006DC521 /* Assets.xcassets */; };
 		4167C1E91D3F53B9006DC521 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4167C1E71D3F53B9006DC521 /* LaunchScreen.storyboard */; };
 		4167C1F31D3F812D006DC521 /* LEZoomView_Inner.h in Headers */ = {isa = PBXBuildFile; fileRef = 4167C1F11D3F812D006DC521 /* LEZoomView_Inner.h */; };
+		4167C1F81D3F8DB7006DC521 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4167C1F51D3F8DB7006DC521 /* 1.jpg */; };
+		4167C1F91D3F8DB7006DC521 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4167C1F61D3F8DB7006DC521 /* 2.jpg */; };
+		4167C1FA1D3F8DB7006DC521 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4167C1F71D3F8DB7006DC521 /* 3.jpg */; };
+		4167C1FB1D3F8ED1006DC521 /* LEPhotoCollectionView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4167C1B81D3F52B8006DC521 /* LEPhotoCollectionView.framework */; };
+		4167C1FC1D3F8ED1006DC521 /* LEPhotoCollectionView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4167C1B81D3F52B8006DC521 /* LEPhotoCollectionView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4167C1FF1D3FA280006DC521 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4167C1E01D3F53B9006DC521 /* ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +37,20 @@
 			remoteInfo = LEPhotoCollectionView;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4167C1FD1D3F8ED1006DC521 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4167C1FC1D3F8ED1006DC521 /* LEPhotoCollectionView.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4167C1B81D3F52B8006DC521 /* LEPhotoCollectionView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LEPhotoCollectionView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +73,9 @@
 		4167C1E81D3F53B9006DC521 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4167C1EA1D3F53B9006DC521 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4167C1F11D3F812D006DC521 /* LEZoomView_Inner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEZoomView_Inner.h; sourceTree = "<group>"; };
+		4167C1F51D3F8DB7006DC521 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
+		4167C1F61D3F8DB7006DC521 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
+		4167C1F71D3F8DB7006DC521 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4167C1FB1D3F8ED1006DC521 /* LEPhotoCollectionView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +132,9 @@
 		4167C1D81D3F53B9006DC521 /* LEPhotoCollectionViewDemo */ = {
 			isa = PBXGroup;
 			children = (
+				4167C1F51D3F8DB7006DC521 /* 1.jpg */,
+				4167C1F61D3F8DB7006DC521 /* 2.jpg */,
+				4167C1F71D3F8DB7006DC521 /* 3.jpg */,
 				4167C1DC1D3F53B9006DC521 /* AppDelegate.h */,
 				4167C1DD1D3F53B9006DC521 /* AppDelegate.m */,
 				4167C1DF1D3F53B9006DC521 /* ViewController.h */,
@@ -149,9 +175,9 @@
 			files = (
 				4167C1BC1D3F52B8006DC521 /* LEPhotoCollectionView.h in Headers */,
 				4167C1CD1D3F533B006DC521 /* LEPhotoCell.h in Headers */,
+				4167C1CF1D3F533B006DC521 /* LEZoomView.h in Headers */,
 				4167C1CB1D3F533B006DC521 /* LEGapPagingCollectionView.h in Headers */,
 				4167C1F31D3F812D006DC521 /* LEZoomView_Inner.h in Headers */,
-				4167C1CF1D3F533B006DC521 /* LEZoomView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +209,7 @@
 				4167C1D31D3F53B9006DC521 /* Sources */,
 				4167C1D41D3F53B9006DC521 /* Frameworks */,
 				4167C1D51D3F53B9006DC521 /* Resources */,
+				4167C1FD1D3F8ED1006DC521 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -243,6 +270,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4167C1E91D3F53B9006DC521 /* LaunchScreen.storyboard in Resources */,
+				4167C1F81D3F8DB7006DC521 /* 1.jpg in Resources */,
+				4167C1F91D3F8DB7006DC521 /* 2.jpg in Resources */,
+				4167C1FA1D3F8DB7006DC521 /* 3.jpg in Resources */,
 				4167C1E61D3F53B9006DC521 /* Assets.xcassets in Resources */,
 				4167C1E41D3F53B9006DC521 /* Main.storyboard in Resources */,
 			);
@@ -265,7 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4167C1E11D3F53B9006DC521 /* ViewController.m in Sources */,
+				4167C1FF1D3FA280006DC521 /* ViewController.m in Sources */,
 				4167C1DE1D3F53B9006DC521 /* AppDelegate.m in Sources */,
 				4167C1DB1D3F53B9006DC521 /* main.m in Sources */,
 			);

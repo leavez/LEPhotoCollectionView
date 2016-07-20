@@ -56,7 +56,7 @@
         CGRect widerFrame = frame;
         widerFrame.size.width += self.itemsGap;
         widerFrame.origin.x -= self.itemsGap/2;
-        self.innerCollectionView = [[PhotoBrowserCollectionView alloc] initWithFrame:widerFrame];
+        self.innerCollectionView = [[PhotoBrowserCollectionView alloc] initWithFrame:widerFrame itemsGap:self.itemsGap];
         [self addSubview:self.innerCollectionView];
         self.backgroundColor = [UIColor clearColor];
     }
