@@ -34,6 +34,8 @@
 
 @interface LEZoomView()<UIScrollViewDelegate,DelageteImageViewDelegate>
 @property (nonatomic,assign) CGFloat fillScreenZoomScale;
+// flags
+@property (nonatomic,assign) CGSize lastSize;
 @end
 
 
@@ -160,9 +162,9 @@
 // Center the image as it becomes smaller than the size of the screen
 - (void)layoutSubviews {
     // 只要在动的时候，这个方法都会被调用
-    
     [super layoutSubviews];
-    
+
+    // center the image view
     CGSize boundsSize = self.bounds.size;
     CGRect frameToCenter = self.imageView.frame;
     
@@ -179,10 +181,15 @@
     } else {
         frameToCenter.origin.y = 0;
     }
-    
-    // Center
+
     if (!CGRectEqualToRect(self.imageView.frame, frameToCenter)){
         self.imageView.frame = frameToCenter;
+    }
+
+    // refresh zoom scalse if needed
+    if (!CGSizeEqualToSize(self.lastSize, self.bounds.size)) {
+        self.lastSize = self.bounds.size;
+        [self setMaxMinZoomScalesForCurrentBounds];
     }
 }
 

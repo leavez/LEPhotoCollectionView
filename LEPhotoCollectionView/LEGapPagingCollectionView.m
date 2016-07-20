@@ -39,12 +39,15 @@
     [super setFrame:frame];
     self.flowLayout.itemSize = CGSizeMake(frame.size.width - self.itemsGap, frame.size.height);
 }
+
+
 @end
 
 
 
-
-
+@interface LEGapPagingCollectionView()
+@property (nonatomic, assign) CGSize lastCollectionSize;
+@end
 
 @implementation LEGapPagingCollectionView
 
@@ -73,26 +76,47 @@
     self.innerCollectionView.dataSource = datasource;
 }
 
+- (void)layoutSubviews{
+    [super layoutSubviews];
+
+    if (!CGSizeEqualToSize(self.lastCollectionSize, self.frame.size)) {
+        self.lastCollectionSize = self.frame.size;
+
+        NSInteger oldIndex = self.currentPage;
+
+        CGRect widerFrame = self.frame;
+        widerFrame.size.width += self.itemsGap;
+        widerFrame.origin.x = -self.itemsGap/2;
+        widerFrame.origin.y = 0;
+        [self.innerCollectionView setFrame:widerFrame];
+        [self scrollToPage:oldIndex animated:NO];
+
+    }
+}
+
+
+
+#pragma mark - Interface
+
 - (void)reloadData{
     [self.innerCollectionView reloadData];
 }
 
-- (void)layoutSubviews{
-    [super layoutSubviews];
-    
-    CGRect widerFrame = self.frame;
-    widerFrame.size.width += self.itemsGap;
-    widerFrame.origin.x = -self.itemsGap/2;
-    widerFrame.origin.y = 0;
-    [self.innerCollectionView setFrame:widerFrame];
+- (BOOL)scrollToPage:(NSInteger)pageIndex animated:(BOOL)animated {
+    if (pageIndex < 0 && pageIndex >= [self.innerCollectionView numberOfItemsInSection:0]) {
+        return NO;
+    }
+    [self.innerCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:pageIndex inSection:0]
+                                     atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally
+                                             animated:animated];
+    return YES;
 }
 
 
 - (NSInteger)currentPage {
     CGFloat offset = self.innerCollectionView.contentOffset.x;
     CGFloat width = self.innerCollectionView.bounds.size.width;
-    int page = (int)( (offset + width/2 ) / width );
-    return page;
+    return [self pageByOffset:offset viewWidth:width];
 }
 - (CGFloat)currentPageDeviationRatio {
     CGFloat width = self.innerCollectionView.bounds.size.width;
@@ -100,6 +124,14 @@
     CGFloat currentPhotoCenter = self.innerCollectionView.contentOffset.x + width/2;
     CGFloat percentage = (currentPhotoCenter - pageCenter) / (width/2);
     return percentage;
+}
+
+
+#pragma mark - inner method
+
+- (int)pageByOffset:(CGFloat)offset viewWidth:(CGFloat)width {
+    int page = (int)( (offset + width/2 ) / width );
+    return page;
 }
 
 

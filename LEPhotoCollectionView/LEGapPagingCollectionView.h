@@ -28,6 +28,12 @@
  */
 - (void)reloadData;
 
+/**
+ *  Scroll to page at index
+ *  @return if pageIndex is invalid, return NO.
+ */
+- (BOOL)scrollToPage:(NSInteger)pageIndex animated:(BOOL)animated;
+
 
 /**
  *  The deviation of cell's center from collectionView's center (in CollectionView's superView coodinated).
