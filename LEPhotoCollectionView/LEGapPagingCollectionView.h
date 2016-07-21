@@ -14,9 +14,9 @@
  */
 @interface LEGapPagingCollectionView : UIView
 
-@property (nonatomic, strong) UICollectionView *innerCollectionView;
-@property (nonatomic, weak) id<UICollectionViewDelegate> delegate;
-@property (nonatomic, weak) id<UICollectionViewDataSource> datasource;
+@property (nonatomic, strong, nonnull) UICollectionView *innerCollectionView;
+@property (nonatomic, weak, nullable) id<UICollectionViewDelegate> delegate;
+@property (nonatomic, weak, nullable) id<UICollectionViewDataSource> datasource;
 
 /// the gap between pages, default is 40.
 @property (nonatomic, assign) CGFloat itemsGap;

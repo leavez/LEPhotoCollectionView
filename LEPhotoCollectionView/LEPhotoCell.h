@@ -17,28 +17,29 @@
  *  Image displyed in innerScrollView, which manage zoom.
  */
 @interface LEPhotoCell : UICollectionViewCell
-@property (nonatomic,strong) LEZoomView *innerScrollView;
+@property (nonatomic, strong, nonnull) LEZoomView *innerScrollView;
 
 
 // -------- menu -----------
+// -------- menu is depracated -----------
 /**
  *  long press this view will show a system menu (UIMenuController)
  *  enable defalut is NO.
  */
 @property (nonatomic, assign) BOOL menuEnabled;
-@property (nonatomic, weak) id<LEPhotoCellMenuDelegate> menuDelegate;
-@property (nonatomic, copy) NSString *saveButtonTitle;
-@property (nonatomic, copy) NSString *imageCopyButtonTitle;
-@property (nonatomic, copy) NSString *linkCopyButtonTitle;
-@property (nonatomic, copy) NSString *shareButtonTitle;
+@property (nonatomic, weak, nullable) id<LEPhotoCellMenuDelegate> menuDelegate;
+@property (nonatomic, strong, nullable) NSString *saveButtonTitle;
+@property (nonatomic, strong, nullable) NSString *imageCopyButtonTitle;
+@property (nonatomic, strong, nullable) NSString *linkCopyButtonTitle;
+@property (nonatomic, strong, nullable) NSString *shareButtonTitle;
 
 @end
 
 
 @protocol LEPhotoCellMenuDelegate <NSObject>
 @optional
-- (void)photoCellMenuDidTapCopy:(LEPhotoCell*)photoCell;
-- (void)photoCellMenuDidTapSave:(LEPhotoCell*)photoCell;
-- (void)photoCellMenuDidTapShare:(LEPhotoCell*)photoCell;
-- (void)photoCellMenuDidCopyLink:(LEPhotoCell*)photoCell;
+- (void)photoCellMenuDidTapCopy:(nonnull LEPhotoCell*)photoCell;
+- (void)photoCellMenuDidTapSave:(nonnull LEPhotoCell*)photoCell;
+- (void)photoCellMenuDidTapShare:(nonnull LEPhotoCell*)photoCell;
+- (void)photoCellMenuDidCopyLink:(nonnull LEPhotoCell*)photoCell;
 @end
