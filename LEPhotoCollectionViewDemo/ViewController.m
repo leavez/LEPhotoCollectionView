@@ -24,7 +24,7 @@
     [self.view addSubview:self.photoView];
     self.photoView.delegate = self;
     self.photoView.datasource = self;
-    [self.photoView.innerCollectionView registerClass:LEPhotoCell.class forCellWithReuseIdentifier:@"cell"];
+    [self.photoView.innerCollectionView registerClass:LEDraggablePhotoCell.class forCellWithReuseIdentifier:@"cell"];
 
     NSMutableArray *images = [NSMutableArray array];
     for (NSString *name in @[@"1.jpg",@"2.jpg",@"3.jpg"]) {
@@ -40,8 +40,9 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    LEPhotoCell *c = (LEPhotoCell *)cell;
+    LEDraggablePhotoCell *c = (LEDraggablePhotoCell *)cell;
     c.innerScrollView.image = self.data[indexPath.row];
+    c.collectionView = collectionView;
     return c;
 }
 

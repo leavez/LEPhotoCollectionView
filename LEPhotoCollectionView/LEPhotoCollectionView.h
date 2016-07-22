@@ -17,4 +17,5 @@ FOUNDATION_EXPORT const unsigned char LEPhotoCollectionViewVersionString[];
 // In this header, you should import all the public headers of your framework using statements like #import <LEPhotoCollectionView/PublicHeader.h>
 #import "LEGapPagingCollectionView.h"
 #import "LEPhotoCell.h"
+#import "LEDraggablePhotoCell.h"
 
