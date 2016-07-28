@@ -32,11 +32,14 @@
 /// valid when image is smaller than the view.
 /// NO means scale image to fit the view, and YES means just show the original size
 @property (nonatomic, assign) BOOL noInitailZoomIn;
+/// ABS(image_ratio - container_ratio) / container_ratio.
+/// if the value is less than this threshold, the image is considered nearly fullscreen.
+@property (nonatomic, assign) CGFloat nearlyFullThreshold;
 
 
 
 - (void)zoomToPoint:(CGPoint)point ;
-
+- (BOOL)isNearlyFullWhenScaleFit;
 
 // for subclass
 - (void)didDoubleTapSelf:(UITapGestureRecognizer*)tap;

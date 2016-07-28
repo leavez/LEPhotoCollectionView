@@ -34,6 +34,7 @@
 
 @interface LEZoomView()<UIScrollViewDelegate,DelageteImageViewDelegate>
 @property (nonatomic,assign) CGFloat fillScreenZoomScale;
+@property (nonatomic,assign) CGFloat fitScreenZoomScale;
 // flags
 @property (nonatomic,assign) CGSize lastSize;
 @end
@@ -55,6 +56,7 @@
         self.delegate = self;
         self.decelerationRate = UIScrollViewDecelerationRateFast;
         self.maxZoomScale = 3;
+        self.nearlyFullThreshold = 0.15;
         self.noInitailZoomIn = YES;
         
         // tap guesture
@@ -133,20 +135,18 @@
     // use minimum of these to allow the image to become fully visible
     CGFloat minScale = MIN(xScale, yScale);
     minScale *= 0.9999; // 否则会有bug
+    self.fitScreenZoomScale = minScale;
     self.fillScreenZoomScale = MAX(xScale, yScale) * 0.999;
-    
+
     // Image is smaller than screen so no zooming!
     if (!self.noInitailZoomIn && xScale >= 1 && yScale >= 1) {
         minScale = 1.0;
     }
-    
-    // give Max
-    CGFloat maxScale = self.maxZoomScale;
-    
+
     // Set min/max zoom
-    self.maximumZoomScale = maxScale;
     self.minimumZoomScale = minScale;
-    
+    self.maximumZoomScale = self.maxZoomScale;
+
     // Initial zoom，以显示全图
     self.zoomScale = minScale;
     
@@ -249,11 +249,18 @@
 
 
 - (void)zoomToPoint:(CGPoint)point {
-    //            CGFloat newZoomScale = self.maximumZoomScale + (self.minimumZoomScale - self.maximumZoomScale) *kDoubleToZoomPrecentageToMaxZoom;
-    CGFloat newZoomScale = self.fillScreenZoomScale;
+    CGFloat newZoomScale = [self isNearlyFullWhenScaleFit] ? 1.8 * self.minimumZoomScale : self.fillScreenZoomScale;
     CGFloat xsize = self.bounds.size.width / newZoomScale;
     CGFloat ysize = self.bounds.size.height / newZoomScale;
     [self zoomToRect:CGRectMake(point.x - xsize/2, point.y - ysize/2, xsize, ysize) animated:YES];
 
 }
+
+- (BOOL)isNearlyFullWhenScaleFit {
+    CGSize size = self.image.size;
+    CGFloat imageRatio = size.height / size.width;
+    CGFloat containerRatio = self.bounds.size.height / self.bounds.size.width;
+    return ABS(imageRatio - containerRatio) / containerRatio < self.nearlyFullThreshold;
+}
+
 @end
