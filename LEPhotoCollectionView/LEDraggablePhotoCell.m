@@ -123,7 +123,7 @@
         return [self.dragDelegate draggableCellShouldMoveAway:self velocity:velocity translation:translation];
     } else {
         // default setting
-        return !(ABS(velocity.y) < 500 && ABS(translation.y) < 50);
+        return !(ABS(velocity.y) < 500 && ABS(translation.y) < 130);
     }
 }
 
