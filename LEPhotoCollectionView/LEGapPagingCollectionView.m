@@ -103,7 +103,7 @@
 }
 
 - (BOOL)scrollToPage:(NSInteger)pageIndex animated:(BOOL)animated {
-    if (pageIndex < 0 && pageIndex >= [self.innerCollectionView numberOfItemsInSection:0]) {
+    if (pageIndex < 0 || pageIndex >= [self.innerCollectionView numberOfItemsInSection:0]) {
         return NO;
     }
     [self.innerCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:pageIndex inSection:0]

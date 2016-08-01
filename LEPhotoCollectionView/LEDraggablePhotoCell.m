@@ -87,11 +87,11 @@
             if ([self shouldExit:translation velocity:velocity]) {
                 // go away
                 if ([self.dragDelegate respondsToSelector:@selector(draggableCellWillMoveAway:)]) {
-                    return [self.dragDelegate draggableCellWillMoveAway:self];
+                    [self.dragDelegate draggableCellWillMoveAway:self];
                 }
                 [self moveAwayAnimatedWithPresentTranslation:translation Velocity:velocity Completion:^{
                     if ([self.dragDelegate respondsToSelector:@selector(draggableCellDidMoveAway:)]) {
-                        return [self.dragDelegate draggableCellDidMoveAway:self];
+                        [self.dragDelegate draggableCellDidMoveAway:self];
                     }
                     [self showImageShadow:NO];
                 }];
@@ -100,11 +100,11 @@
                 // move back
                 [self showImageShadow:NO];
                 if ([self.dragDelegate respondsToSelector:@selector(draggableCellWillMoveBack:)]) {
-                    return [self.dragDelegate draggableCellWillMoveBack:self];
+                    [self.dragDelegate draggableCellWillMoveBack:self];
                 }
                 [self moveBackAnimatedWithPresentTranslation:translation Velocity:velocity Completion:^{
                     if ([self.dragDelegate respondsToSelector:@selector(draggableCellDidMoveBack:)]) {
-                        return [self.dragDelegate draggableCellDidMoveBack:self];
+                        [self.dragDelegate draggableCellDidMoveBack:self];
                     }
                 }];
             }
