@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "LEPhotoCollectionView"
-  s.version      = "0.0.3"
+  s.version      = "0.1"
   s.summary      = "CollectionView and cell for viewing images like Photo app"
   s.description  = <<-DESC
   A composite lib for viewing images.
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.license      = "MIT"
   s.author             = "Leave"
   s.platform     = :ios, "8.0"
-  s.source       = { :git => "https://github.com/leavez/LEPhotoCollectionView.git", :tag => "0.0.3" }
+  s.source       = { :git => "https://github.com/leavez/LEPhotoCollectionView.git", :tag => "#{s.version}" }
   s.source_files  = "LEPhotoCollectionView/*.{h,m}"
 
 end
