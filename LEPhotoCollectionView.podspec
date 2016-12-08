@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "LEPhotoCollectionView"
-  s.version      = "0.1"
+  s.version      = "0.1.1"
   s.summary      = "CollectionView and cell for viewing images like Photo app"
   s.description  = <<-DESC
   A composite lib for viewing images.
