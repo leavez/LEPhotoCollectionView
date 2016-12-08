@@ -11,28 +11,12 @@
 #define kDoubleToZoomPrecentageToMaxZoom 0.4
 
 
-@protocol DelageteImageViewDelegate <NSObject>
-- (void)delegateImageViewdidSetImage:(UIImage *)image;
-@end
 
-@interface DelegateImageView : UIImageView
-@property (nonatomic,weak) id<DelageteImageViewDelegate> delegate;
-@end
-
-@implementation DelegateImageView
-// override
-- (void)setImage:(UIImage *)image {
-    [super setImage:image];
-    if ([self.delegate respondsToSelector:@selector(delegateImageViewdidSetImage:)]) {
-        [self.delegate delegateImageViewdidSetImage:image];
-    }
-}
-@end
+static NSString *observeContext = @"observeContext";
 
 
 
-
-@interface LEZoomView()<UIScrollViewDelegate,DelageteImageViewDelegate>
+@interface LEZoomView()<UIScrollViewDelegate>
 @property (nonatomic,assign) CGFloat fillScreenZoomScale;
 @property (nonatomic,assign) CGFloat fitScreenZoomScale;
 // flags
@@ -47,8 +31,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        DelegateImageView *imageView = [[DelegateImageView alloc] initWithFrame:CGRectZero];
-        imageView.delegate = self;
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
         _imageView = imageView;
         [self addSubview:_imageView];
         _imageView.contentMode = UIViewContentModeCenter;
@@ -65,8 +48,23 @@
         self.tapGuestureSingle.numberOfTapsRequired = 1;
         [self addGestureRecognizer:self.tapGuestureSingle];
         [self.tapGuestureSingle requireGestureRecognizerToFail:self.tapGuestureDouble];
+        
+        [self addObserver:self forKeyPath:@"imageView.image" options:0 context:(__bridge void *)(observeContext)];
     }
     return self;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if (context != (__bridge void *)(observeContext)) {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+        return;
+    }
+    [self imageViewdidSetImage:self.imageView.image];
+}
+
+- (void)dealloc {
+    [self removeObserver:self forKeyPath:@"imageView.image"];
 }
 
 -(void)setImage:(UIImage *)image{
@@ -81,7 +79,7 @@
     }
 }
 
-- (void)delegateImageViewdidSetImage:(UIImage *)image
+- (void)imageViewdidSetImage:(UIImage *)image
 {
     [UIView setAnimationsEnabled:NO];
     [self setImageFrameAndContentSize:image];
@@ -137,16 +135,16 @@
     minScale *= 0.9999; // 否则会有bug
     self.fitScreenZoomScale = minScale;
     self.fillScreenZoomScale = MAX(xScale, yScale) * 0.999;
-
+    
     // Image is smaller than screen so no zooming!
     if (!self.noInitailZoomIn && xScale >= 1 && yScale >= 1) {
         minScale = 1.0;
     }
-
+    
     // Set min/max zoom
     self.minimumZoomScale = minScale;
     self.maximumZoomScale = self.maxZoomScale;
-
+    
     // Initial zoom，以显示全图
     self.zoomScale = minScale;
     
@@ -162,7 +160,7 @@
 - (void)layoutSubviews {
     // 只要在动的时候，这个方法都会被调用
     [super layoutSubviews];
-
+    
     // center the image view
     CGSize boundsSize = self.bounds.size;
     CGRect frameToCenter = self.imageView.frame;
@@ -180,11 +178,11 @@
     } else {
         frameToCenter.origin.y = 0;
     }
-
+    
     if (!CGRectEqualToRect(self.imageView.frame, frameToCenter)){
         self.imageView.frame = frameToCenter;
     }
-
+    
     // refresh zoom scalse if needed
     if (!CGSizeEqualToSize(self.lastSize, self.bounds.size)) {
         self.lastSize = self.bounds.size;
@@ -253,7 +251,7 @@
     CGFloat xsize = self.bounds.size.width / newZoomScale;
     CGFloat ysize = self.bounds.size.height / newZoomScale;
     [self zoomToRect:CGRectMake(point.x - xsize/2, point.y - ysize/2, xsize, ysize) animated:YES];
-
+    
 }
 
 - (BOOL)isNearlyFullWhenScaleFit {
