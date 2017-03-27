@@ -8,10 +8,8 @@
 
 #import "LEZoomView.h"
 #import "LEZoomView_Inner.h"
+
 #define kDoubleToZoomPrecentageToMaxZoom 0.4
-
-
-
 static NSString *observeContext = @"observeContext";
 
 
@@ -49,22 +47,22 @@ static NSString *observeContext = @"observeContext";
         [self addGestureRecognizer:self.tapGuestureSingle];
         [self.tapGuestureSingle requireGestureRecognizerToFail:self.tapGuestureDouble];
         
-        [self addObserver:self forKeyPath:@"imageView.image" options:0 context:(__bridge void *)(observeContext)];
+        [self addObserver:self forKeyPath:@"imageView.image" options:0 context:&observeContext];
     }
     return self;
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-    if (context != (__bridge void *)(observeContext)) {
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+
+    if (context == &observeContext && [keyPath isEqualToString:@"imageView.image"]) {
+        [self imageViewdidSetImage:self.imageView.image];
+    } else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-        return;
     }
-    [self imageViewdidSetImage:self.imageView.image];
 }
 
 - (void)dealloc {
-    [self removeObserver:self forKeyPath:@"imageView.image"];
+    [self removeObserver:self forKeyPath:@"imageView.image" context:&observeContext];
 }
 
 -(void)setImage:(UIImage *)image{
@@ -79,8 +77,7 @@ static NSString *observeContext = @"observeContext";
     }
 }
 
-- (void)imageViewdidSetImage:(UIImage *)image
-{
+- (void)imageViewdidSetImage:(UIImage *)image {
     [UIView setAnimationsEnabled:NO];
     [self setImageFrameAndContentSize:image];
     [UIView setAnimationsEnabled:YES];
