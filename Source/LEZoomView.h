@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+
+#ifdef LE_GIF_SUPPORT
+#import <FLAnimatedImage/FLAnimatedImage.h>
+#endif
+
 @protocol LEZoomViewDelegate <NSObject>
 - (void)didSingleTapZoomView:(UITapGestureRecognizer*)tap;
 @optional
@@ -23,7 +28,12 @@
 
 /// just set `image`, no need to set `imageView.image`
 @property (nonatomic, strong) UIImage* image;
+#ifdef LE_GIF_SUPPORT
+@property (nonatomic, strong, readonly) FLAnimatedImageView* imageView;
+#else
 @property (nonatomic, strong, readonly) UIImageView* imageView;
+#endif
+
 @property (nonatomic, weak) id<LEZoomViewDelegate> zoomViewDelegate;
 /// default is YES
 @property (nonatomic, assign) BOOL enableDoubleTapToZoom;

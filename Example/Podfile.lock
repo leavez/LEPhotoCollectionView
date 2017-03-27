@@ -1,5 +1,5 @@
 PODS:
-  - LEPhotoCollectionView (0.1)
+  - LEPhotoCollectionView (0.2)
 
 DEPENDENCIES:
   - LEPhotoCollectionView (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  LEPhotoCollectionView: 13b31e8dfae7d2977b0c428c1c1690fffff81e76
+  LEPhotoCollectionView: c0aef4f27c54e74b89d483df86c0e1ae21a1323e
 
 PODFILE CHECKSUM: c46de1c56c32daf4d208daf22c138e38a223528b
 

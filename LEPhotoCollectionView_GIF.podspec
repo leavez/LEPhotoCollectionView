@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name         = "LEPhotoCollectionView"
+  s.name         = "LEPhotoCollectionView_GIF"
   s.version      = "0.2"
   s.summary      = "CollectionView and cell for viewing images like Photo app"
   s.description  = <<-DESC
@@ -10,9 +10,11 @@ Pod::Spec.new do |s|
 
   s.homepage     = "https://github.com/leavez/LEPhotoCollectionView"
   s.license      = "MIT"
-  s.author             = "Leave"
+  s.author       = "Leave"
   s.platform     = :ios, "8.0"
   s.source       = { :git => "https://github.com/leavez/LEPhotoCollectionView.git", :tag => "#{s.version}" }
-  s.source_files  = "Source/**/*.{h,m}"
+  s.source_files  = "source/*.{h,m}"
+  s.dependency "FLAnimatedImage"
+  s.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) LE_GIF_SUPPORT=1' }
 
 end

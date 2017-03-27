@@ -29,8 +29,11 @@ static NSString *observeContext = @"observeContext";
 {
     self = [super initWithFrame:frame];
     if (self) {
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-        _imageView = imageView;
+#ifdef LE_GIF_SUPPORT
+        _imageView = [[FLAnimatedImageView alloc] initWithFrame:CGRectZero];
+#else
+        _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+#endif
         [self addSubview:_imageView];
         _imageView.contentMode = UIViewContentModeCenter;
         
