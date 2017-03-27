@@ -1,0 +1,16 @@
+PODS:
+  - LEPhotoCollectionView (0.1)
+
+DEPENDENCIES:
+  - LEPhotoCollectionView (from `../`)
+
+EXTERNAL SOURCES:
+  LEPhotoCollectionView:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  LEPhotoCollectionView: 13b31e8dfae7d2977b0c428c1c1690fffff81e76
+
+PODFILE CHECKSUM: c46de1c56c32daf4d208daf22c138e38a223528b
+
+COCOAPODS: 1.2.0

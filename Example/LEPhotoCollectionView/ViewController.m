@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "LEPhotoCollectionView.h"
+#import <LEPhotoCollectionView/LEPhotoCollectionView.h>
 
 @interface ViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
 @property (nonatomic) LEGapPagingCollectionView *photoView;

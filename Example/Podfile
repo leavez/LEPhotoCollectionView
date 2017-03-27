@@ -1,0 +1,5 @@
+
+target 'LEPhotoCollectionView_Example' do
+  pod 'LEPhotoCollectionView', :path => '../'
+
+end

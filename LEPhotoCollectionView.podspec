@@ -13,6 +13,6 @@ Pod::Spec.new do |s|
   s.author             = "Leave"
   s.platform     = :ios, "8.0"
   s.source       = { :git => "https://github.com/leavez/LEPhotoCollectionView.git", :tag => "#{s.version}" }
-  s.source_files  = "LEPhotoCollectionView/*.{h,m}"
+  s.source_files  = "Source/**/*.{h,m}"
 
 end
