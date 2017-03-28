@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E5467871E8A2DDC00694AE6 /* slow.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3E5467861E8A2DDC00694AE6 /* slow.gif */; };
 		3E83BC9D1E893DA500528EA8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E83BC9C1E893DA500528EA8 /* ViewController.m */; };
 		3E83BCA11E893DB800528EA8 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E83BC9E1E893DB800528EA8 /* 1.jpg */; };
 		3E83BCA21E893DB800528EA8 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E83BC9F1E893DB800528EA8 /* 2.jpg */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		32CDCE6174D8E463F8ECD5E4 /* libPods-LEPhotoCollectionView_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LEPhotoCollectionView_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E5467861E8A2DDC00694AE6 /* slow.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = slow.gif; sourceTree = "<group>"; };
 		3E83BC9B1E893DA500528EA8 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		3E83BC9C1E893DA500528EA8 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		3E83BC9E1E893DB800528EA8 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
@@ -49,10 +51,10 @@
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A8FD7EAFAF53A5F4BD9D9607 /* Pods-LEPhotoCollectionView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LEPhotoCollectionView_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-LEPhotoCollectionView_Example/Pods-LEPhotoCollectionView_Example.release.xcconfig"; sourceTree = "<group>"; };
+		A8FD7EAFAF53A5F4BD9D9607 /* Pods-LEPhotoCollectionView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; lineEnding = 0; name = "Pods-LEPhotoCollectionView_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-LEPhotoCollectionView_Example/Pods-LEPhotoCollectionView_Example.release.xcconfig"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.xcconfig; };
 		A90BF53FE7E78B7226606F70 /* Pods_LEPhotoCollectionView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LEPhotoCollectionView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9F62C0CCC43995A6246867E /* Pods-LEPhotoCollectionView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LEPhotoCollectionView_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LEPhotoCollectionView_Tests/Pods-LEPhotoCollectionView_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		E6431A92B7D83827A66B0252 /* Pods-LEPhotoCollectionView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LEPhotoCollectionView_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LEPhotoCollectionView_Example/Pods-LEPhotoCollectionView_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		E6431A92B7D83827A66B0252 /* Pods-LEPhotoCollectionView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; lineEnding = 0; name = "Pods-LEPhotoCollectionView_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LEPhotoCollectionView_Example/Pods-LEPhotoCollectionView_Example.debug.xcconfig"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.xcconfig; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				3E83BC9E1E893DB800528EA8 /* 1.jpg */,
 				3E83BC9F1E893DB800528EA8 /* 2.jpg */,
 				3E83BCA01E893DB800528EA8 /* 3.jpg */,
+				3E5467861E8A2DDC00694AE6 /* slow.gif */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
@@ -194,6 +197,12 @@
 				CLASSPREFIX = LE;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "gaojiji@gmail.com";
+				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = HMURGHE8W3;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = 6003F585195388D10070C39A /* Build configuration list for PBXProject "LEPhotoCollectionView" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -219,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E83BCA21E893DB800528EA8 /* 2.jpg in Resources */,
+				3E5467871E8A2DDC00694AE6 /* slow.gif in Resources */,
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
@@ -397,12 +407,16 @@
 			baseConfigurationReference = E6431A92B7D83827A66B0252 /* Pods-LEPhotoCollectionView_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = HMURGHE8W3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LEPhotoCollectionView/LEPhotoCollectionView-Prefix.pch";
 				INFOPLIST_FILE = "LEPhotoCollectionView/LEPhotoCollectionView-Info.plist";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.lea.LEPhotoCollectionView-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -412,11 +426,13 @@
 			baseConfigurationReference = A8FD7EAFAF53A5F4BD9D9607 /* Pods-LEPhotoCollectionView_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = HMURGHE8W3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LEPhotoCollectionView/LEPhotoCollectionView-Prefix.pch";
 				INFOPLIST_FILE = "LEPhotoCollectionView/LEPhotoCollectionView-Info.plist";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.lea.LEPhotoCollectionView-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
