@@ -15,6 +15,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/leavez/LEPhotoCollectionView.git", :tag => "#{s.version}" }
   s.source_files  = "source/*.{h,m}"
   s.dependency "FLAnimatedImage"
-  s.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) LE_GIF_SUPPORT=1' }
+  s.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) LEPhotoCollectionView_GIF_SUPPORT=1' }
+  s.user_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) LEPhotoCollectionView_GIF_SUPPORT=1' }
 
 end

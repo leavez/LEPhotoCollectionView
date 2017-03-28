@@ -29,7 +29,7 @@ static NSString *observeContext = @"observeContext";
 {
     self = [super initWithFrame:frame];
     if (self) {
-#ifdef LE_GIF_SUPPORT
+#ifdef LEPhotoCollectionView_GIF_SUPPORT
         _imageView = [[FLAnimatedImageView alloc] initWithFrame:CGRectZero];
 #else
         _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
@@ -51,14 +51,28 @@ static NSString *observeContext = @"observeContext";
         [self.tapGuestureSingle requireGestureRecognizerToFail:self.tapGuestureDouble];
         
         [self addObserver:self forKeyPath:@"imageView.image" options:0 context:&observeContext];
+#ifdef LEPhotoCollectionView_GIF_SUPPORT
+        [self addObserver:self forKeyPath:@"imageView.animatedImage" options:0 context:&observeContext];
+#endif
     }
     return self;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
 
-    if (context == &observeContext && [keyPath isEqualToString:@"imageView.image"]) {
-        [self imageViewdidSetImage:self.imageView.image];
+    if (context == &observeContext) {
+        if ([keyPath isEqualToString:@"imageView.image"]) {
+            [UIView setAnimationsEnabled:NO];
+            [self setImageRelatedViewProperties:self.imageView.image.size];
+            [UIView setAnimationsEnabled:YES];
+        }
+#ifdef LEPhotoCollectionView_GIF_SUPPORT
+        else if ([keyPath isEqualToString:@"imageView.animatedImage"]) {
+            [UIView setAnimationsEnabled:NO];
+            [self setImageRelatedViewProperties:self.imageView.animatedImage.size];
+            [UIView setAnimationsEnabled:YES];
+        }
+#endif
     } else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
@@ -66,6 +80,9 @@ static NSString *observeContext = @"observeContext";
 
 - (void)dealloc {
     [self removeObserver:self forKeyPath:@"imageView.image" context:&observeContext];
+#ifdef LEPhotoCollectionView_GIF_SUPPORT
+    [self removeObserver:self forKeyPath:@"imageView.animatedImage" context:&observeContext];
+#endif
 }
 
 -(void)setImage:(UIImage *)image{
@@ -80,53 +97,40 @@ static NSString *observeContext = @"observeContext";
     }
 }
 
-- (void)imageViewdidSetImage:(UIImage *)image {
-    [UIView setAnimationsEnabled:NO];
-    [self setImageFrameAndContentSize:image];
-    [UIView setAnimationsEnabled:YES];
-}
 
 
+/// set the imageView frame and scrollview contentSize and zoomScale
+/// call this method when imageView's image is changed
+- (void)setImageRelatedViewProperties:(CGSize)imageSize{
 
-// called when imageView's image is changed
-- (void)setImageFrameAndContentSize:(UIImage*)image{
-    
     // Reset
     self.maximumZoomScale = 1;
     self.minimumZoomScale = 1;
     self.zoomScale = 1;
     self.contentSize = CGSizeMake(0, 0);
-    
-    // Setup photo frame
-    // 让image以原始大小充满contentsize
+
+
+    // Setup photo frame and scrollView content size
+    // 让 imageView 以 image 实际尺寸充满 contentsize
     CGRect frame;
     frame.origin = CGPointZero;
-    frame.size = image.size;
+    frame.size = imageSize;
     self.imageView.frame = frame;
     self.contentSize = frame.size;
-    
-    [self setMaxMinZoomScalesForCurrentBounds];
+
+    // set max min zoom scales for image size and current view bounds
+    CGSize containerSize = self.bounds.size;
+    [self setMaxMinZoomScalesWithContainerSize:containerSize imageSize:imageSize];
 }
 
 
-- (void)setMaxMinZoomScalesForCurrentBounds {
-    
-    // Reset
-    self.maximumZoomScale = 1;
-    self.minimumZoomScale = 1;
-    
-    // Bail if no image
-    if (!self.image && !self.imageView.image){
+
+- (void)setMaxMinZoomScalesWithContainerSize:(CGSize)boundsSize imageSize:(CGSize)imageSize {
+
+    if (CGSizeEqualToSize(imageSize, CGSizeZero)) {
         return;
     }
-    
-    // Reset position
-    self.imageView.frame = CGRectMake(0, 0, self.imageView.frame.size.width, self.imageView.frame.size.height);
-    
-    // Sizes
-    CGSize boundsSize = self.bounds.size;
-    CGSize imageSize = self.imageView.image.size;
-    
+
     // Calculate Min
     CGFloat xScale = boundsSize.width / imageSize.width;    // the scale needed to perfectly fit the image width-wise
     CGFloat yScale = boundsSize.height / imageSize.height;  // the scale needed to perfectly fit the image height-wise
@@ -149,6 +153,10 @@ static NSString *observeContext = @"observeContext";
     self.zoomScale = minScale;
     
 }
+
+
+
+
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
     return self.imageView;
@@ -186,7 +194,7 @@ static NSString *observeContext = @"observeContext";
     // refresh zoom scalse if needed
     if (!CGSizeEqualToSize(self.lastSize, self.bounds.size)) {
         self.lastSize = self.bounds.size;
-        [self setMaxMinZoomScalesForCurrentBounds];
+        [self setImageRelatedViewProperties:self.imageView.image.size];
     }
 }
 

@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-
-#ifdef LE_GIF_SUPPORT
+#ifdef LEPhotoCollectionView_GIF_SUPPORT
 #import <FLAnimatedImage/FLAnimatedImage.h>
 #endif
 
@@ -28,7 +27,7 @@
 
 /// just set `image`, no need to set `imageView.image`
 @property (nonatomic, strong) UIImage* image;
-#ifdef LE_GIF_SUPPORT
+#ifdef LEPhotoCollectionView_GIF_SUPPORT
 @property (nonatomic, strong, readonly) FLAnimatedImageView* imageView;
 #else
 @property (nonatomic, strong, readonly) UIImageView* imageView;
@@ -50,6 +49,7 @@
 
 - (void)zoomToPoint:(CGPoint)point ;
 - (BOOL)isNearlyFullWhenScaleFit;
+
 
 // for subclass
 - (void)didDoubleTapSelf:(UITapGestureRecognizer*)tap;
